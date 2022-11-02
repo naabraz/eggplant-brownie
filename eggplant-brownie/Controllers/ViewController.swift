@@ -6,23 +6,17 @@ class ViewController: UIViewController {
   @IBOutlet weak var felicidadeTextField: UITextField?
   
   @IBAction func adicionar(_ sender: Any) {
-      
-      if let nomeDaRefeicao = nomeTextField?.text,
-         let felicidadeDaRefeicao = felicidadeTextField?.text {
-          let nome = nomeDaRefeicao
-          
-          if let felicidade = Int(felicidadeDaRefeicao) {
-              let refeicao = Refeicao(nome: nome!, felicidade: felicidade)
-              print("comi \(nome) e fiquei com felicidade: \(felicidade)")
-          } else {
-              print("erro ao tentar criar a refeição")
-          }
-      }
-      
-    let nome = nomeTextField.text
-    let felicidade: Int! = Int(felicidadeTextField.text!)
-
-    let refeicao = Refeicao(nome: nome!, felicidade: felicidade)
+    guard let nomeDaRefeicao = nomeTextField?.text else {
+      return
+    }
+    
+    guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
+      print("erro ao obter felicidade")
+      return
+    }
+    
+    let refeicao = Refeicao(nome: nomeDaRefeicao, felicidade: felicidade)
+    
+    print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
   }
-  
 }
