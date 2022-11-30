@@ -15,6 +15,7 @@
 		9C13798928627B02003CBCC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C13798728627B02003CBCC7 /* Main.storyboard */; };
 		9C13798B28627B06003CBCC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C13798A28627B06003CBCC7 /* Assets.xcassets */; };
 		9C13798E28627B06003CBCC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9C13798C28627B06003CBCC7 /* LaunchScreen.storyboard */; };
+		9C6EA2BA293786CE0054C6E1 /* RefeicoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C6EA2B9293786CE0054C6E1 /* RefeicoesTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		9C13798A28627B06003CBCC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C13798D28627B06003CBCC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9C13798F28627B06003CBCC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9C6EA2B9293786CE0054C6E1 /* RefeicoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesTableViewController.swift; sourceTree = "<group>"; };
 		9CEF23C9290AAB790027E2C4 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				9C13798528627B02003CBCC7 /* ViewController.swift */,
+				9C6EA2B9293786CE0054C6E1 /* RefeicoesTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				9C0F5F1E29114B6A00DD7BFC /* Item.swift in Sources */,
 				9C13798628627B02003CBCC7 /* ViewController.swift in Sources */,
 				9C13798228627B02003CBCC7 /* AppDelegate.swift in Sources */,
+				9C6EA2BA293786CE0054C6E1 /* RefeicoesTableViewController.swift in Sources */,
 				9C13798428627B02003CBCC7 /* SceneDelegate.swift in Sources */,
 				9C0F5F1C29114B3300DD7BFC /* Refeicao.swift in Sources */,
 			);
