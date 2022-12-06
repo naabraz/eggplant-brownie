@@ -52,6 +52,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             
         } else {
             celula.accessoryType = .none
+            
+            let item = itens[indexPath.row]
+            if let position = itensSelecionados.firstIndex(of: item) {
+                itensSelecionados.remove(at: position)
+                
+                for itemSelecionado in itensSelecionados {
+                    print(itemSelecionado.nome)
+                }
+            }
         }
     }
     
