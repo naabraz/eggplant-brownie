@@ -21,6 +21,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet var nomeTextField: UITextField?
     @IBOutlet weak var felicidadeTextField: UITextField?
+    
+    // MARK: - View life cycle
+    
+    override func viewDidLoad() {
+        let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar",
+                                                style: .plain,
+                                                target: self,
+                                                action: #selector(adicionarItens))
+        navigationItem.rightBarButtonItem = botaoAdicionaItem
+    }
+    
+    @objc func adicionarItens() {
+        print("Adicionar novo item na lista")
+    }
   
     // MARK: - UITableViewDataSource
     
