@@ -4,10 +4,17 @@ protocol AdicionaRefeicaoDelegate {
     func add(_ refeicao: Refeicao)
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-  
+class ViewController: UIViewController,
+                      UITableViewDataSource,
+                      UITableViewDelegate,
+                      AdicionaItensDelegate {
+    
+    // MARK: IBOutlet
+    
+    @IBOutlet weak var itensTableView: UITableView!
+    
     // MARK: - Atributos
-  
+    
     var delegate: AdicionaRefeicaoDelegate?
     
     var itens: [Item] = [Item(nome: "Molho de Tomate", calorias: 40.0),
@@ -33,11 +40,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @objc func adicionarItens() {
-        let adicionarItensViewController = AdicionarItensViewController()
+        let adicionarItensViewController = AdicionarItensViewController(delegate: self)
         
         navigationController?.pushViewController(adicionarItensViewController, animated: true)
     }
-  
+    
+    func add(_ item: Item) {
+        itens.append(item)
+        
+        itensTableView.reloadData()
+    }
+    
     // MARK: - UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -93,8 +106,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
         
         let refeicao = Refeicao(nome: nomeDaRefeicao,
-            felicidade: felicidade,
-            itens: itensSelecionados)
+                                felicidade: felicidade,
+                                itens: itensSelecionados)
         
         print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
         
