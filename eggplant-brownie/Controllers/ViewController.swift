@@ -99,25 +99,31 @@ class ViewController: UIViewController,
         }
     }
     
-    // MARK: - IBActions
-    
-    @IBAction func adicionar(_ sender: Any) {
+    func recuperaRefeicaoDoFormulario() -> Refeicao? {
         guard let nomeDaRefeicao = nomeTextField?.text else {
-            return
+            return nil
         }
         
-        guard let felicidadeDaRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeDaRefeicao) else {
-            print("erro ao obter felicidade")
-            return
+        guard let felicidadeDaRefeicao = felicidadeTextField?.text,
+              let felicidade = Int(felicidadeDaRefeicao) else {
+            return nil
         }
         
         let refeicao = Refeicao(nome: nomeDaRefeicao,
                                 felicidade: felicidade,
                                 itens: itensSelecionados)
         
-        print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
+        return refeicao
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction func adicionar(_ sender: Any) {
+        if let refeicao = recuperaRefeicaoDoFormulario() {
+            delegate?.add(refeicao)
+            navigationController?.popViewController(animated: true)
+        }
         
-        delegate?.add(refeicao)
-        navigationController?.popViewController(animated: true)
+        Alerta(controller: self).exibe(mensagem: "Erro ao ler dados do formulario")
     }
 }
