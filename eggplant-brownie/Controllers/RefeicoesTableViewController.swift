@@ -3,13 +3,13 @@ import UIKit
 
 class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDelegate {
     var refeicoes = [Refeicao(nome: "Macarrão", felicidade: 4),
-                    Refeicao(nome: "Pizza", felicidade: 4),
-                    Refeicao(nome: "Comida Japonesa", felicidade: 5)]
+                     Refeicao(nome: "Pizza", felicidade: 4),
+                     Refeicao(nome: "Comida Japonesa", felicidade: 5)]
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return refeicoes.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let celula = UITableViewCell(style: .default, reuseIdentifier: nil)
         let refeicao = refeicoes[indexPath.row]
@@ -21,7 +21,7 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
         
         return celula
     }
-
+    
     func add(_ refeicao: Refeicao) {
         refeicoes.append(refeicao)
         tableView.reloadData()
@@ -35,26 +35,13 @@ class RefeicoesTableViewController: UITableViewController, AdicionaRefeicaoDeleg
             
             let refeicao = refeicoes[indexPath.row]
             
-            let alerta = UIAlertController(title: refeicao.nome,
-                                           message: refeicao.detalhes(),
-                                           preferredStyle: .alert)
-            
-            let botaoCancelar = UIAlertAction(title: "OK", style: .cancel)
-            
-            alerta.addAction(botaoCancelar)
-            
-            let botaoRemover = UIAlertAction(title: "Remover", style: .destructive, handler: removeRefeicao)
-            
-            alerta.addAction(botaoRemover)
-            
-            present(alerta, animated: true)
+            RemoveRefeicaoViewContoller(controller: self).exibe(refeicao, handler: { alert in
+                self.refeicoes.remove(at: indexPath.row)
+                self.tableView.reloadData()
+            })
         }
     }
     
-    func removeRefeicao(alerta: UIAlertAction) {
-        print("Remover refeicao")
-    }
-
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "adicionar" {
             if let viewController = segue.destination as? ViewController {
