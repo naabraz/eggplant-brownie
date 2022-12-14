@@ -11,7 +11,7 @@ class Refeicao: NSObject, NSCoding {
         self.felicidade = felicidade
         self.itens = itens
     }
-    
+
     // MARK: - NSCoding
     
     func encode(with coder: NSCoder) {
@@ -19,7 +19,7 @@ class Refeicao: NSObject, NSCoding {
         coder.encode(felicidade, forKey: "felicidade")
         coder.encode(itens, forKey: "itens")
     }
-    
+
     required init?(coder: NSCoder) {
         nome = coder.decodeObject(forKey: "nome") as! String
         felicidade = coder.decodeInteger(forKey: "felicidade")
@@ -35,7 +35,7 @@ class Refeicao: NSObject, NSCoding {
 
         return total
     }
-    
+
     func detalhes() -> String {
         var mensagem = "Felicidade: \(felicidade)"
         
